@@ -22,7 +22,7 @@ Save the data to the file
 Developed By : Kanishka.V.S
 Reg No : 212222230061
 ```
-# DATA PREPROCESSING BEFORE FEATURE SELECTION:
+## DATA PREPROCESSING BEFORE FEATURE SELECTION:
 ```py
 import pandas as pd
 import numpy as np
@@ -31,12 +31,12 @@ df=pd.read_csv('/content/titanic_dataset.csv')
 df.head()
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/7507a88a-e400-49e7-afb0-b39ed6307c06)
-# CHECKING NULL VALUES:
+## CHECKING NULL VALUES:
 ```py
 df.isnull().sum()
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/323d9542-4dc8-40a5-8de5-a8dcd3ffe2af)
-# DROPPING UNWANTED DATAS:
+## DROPPING UNWANTED DATAS:
 ```py
 df.drop('Cabin',axis=1,inplace=True)
 df.drop('Name',axis=1,inplace=True)
@@ -46,7 +46,7 @@ df.drop('Parch',axis=1,inplace=True)
 df.head()
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/49ba9f2e-b856-44ca-a096-78755d1bee0e)
-# DATA CLEANING:
+## DATA CLEANING:
 ```py
 df['Age']=df['Age'].fillna(df['Age'].median())
 df['Embarked']=df['Embarked'].fillna(df['Embarked'].mode()[0])
@@ -54,7 +54,7 @@ df.isnull().sum()
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/1f93dcf6-f518-41bb-81a1-2ae077a93849)
 
-# REMOVING OUTLIERS:
+## REMOVING OUTLIERS:
 ### Before:
 ```py
 plt.title("Dataset with outliers")
@@ -74,7 +74,7 @@ df.boxplot()
 plt.show()
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/974ec683-cfe4-4756-9842-e7456a3b27b5)
-# Feature Selection:
+## Feature Selection:
 ```py
 from sklearn.preprocessing import OrdinalEncoder
 climate = ['C','S','Q']
@@ -139,7 +139,7 @@ plt.show()
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/b58bdb6d-13c4-4ee9-aff5-c5ca99644223)
 
-# HIGHLY CORRELATED FEATURES WITH THE OUTPUT VARIABLE SURVIVED:
+## HIGHLY CORRELATED FEATURES WITH THE OUTPUT VARIABLE SURVIVED:
 ```py
 cor_target = abs(cor["Survived"])
 relevant_features = cor_target[cor_target>0.5]
@@ -147,7 +147,7 @@ relevant_features
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/eb36808b-7890-47ea-8bb3-8d46b60f8a44)
 
-# BACKWARD ELIMINATION:
+## BACKWARD ELIMINATION:
 ```py
 cols = list(X.columns)
 pmax = 1
@@ -189,7 +189,7 @@ print("Optimum number of features: %d" %nof)
 print("Score with %d features: %f" % (nof, high_score))
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/5075fda2-cf1d-416b-9394-92ff63f7df36)
-# FINAL SET OF FEATURE:
+## FINAL SET OF FEATURE:
 ```py
 cols = list(X.columns)
 model = LinearRegression()
@@ -201,7 +201,7 @@ selected_features_rfe = temp[temp==True].index
 print(selected_features_rfe)
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/38a07d08-6d09-40d4-a2e5-3ce4478d7432)
-# EMBEDDED METHOD:
+## EMBEDDED METHOD:
 ```py
 reg = LassoCV()
 reg.fit(X, y)

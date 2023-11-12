@@ -55,14 +55,14 @@ df.isnull().sum()
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/1f93dcf6-f518-41bb-81a1-2ae077a93849)
 
 # REMOVING OUTLIERS:
-# Before:
+### Before:
 ```py
 plt.title("Dataset with outliers")
 df.boxplot()
 plt.show()
 ```
 ![image](https://github.com/kanishka2305/ODD2023-Datascience-Ex-07/assets/113497357/d0ba9fd1-e2c6-4c6c-b161-df7d4f2139a1)
-# After:
+### After:
 ```py
 cols = ['Age','SibSp','Fare']
 Q1 = df[cols].quantile(0.25)
